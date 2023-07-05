@@ -1,0 +1,228 @@
+@use '../../variables' ;
+.bannerSlide_each {
+    position: relative;
+
+    img {
+        height: calc(100vh - 60px);
+        object-fit: cover;
+        width: 100%;
+    }
+
+    .bannerSlide_each_inner {
+
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        position: absolute;
+        bottom: 60px;
+        top: 70px;
+        left: 55px;
+        right: 55px;
+        max-width: 850px;
+        margin: auto;
+
+
+        .bannerSlide_each_conetnt {
+            background: rgba(4, 4, 4, 0.7);
+            padding: 20px;
+            color: #fff;
+            -webkit-animation-duration: .5s;
+            animation-duration: .5s;
+            border-top: 5px solid #1bbd36;
+            width: 100%;
+
+            h2 {
+                color: #fff;
+                margin-bottom: 20px;
+                font-size: 28px;
+                font-weight: 700;
+            }
+        }
+    }
+
+
+}
+
+
+// about section design start
+.about_sec {
+    .content {
+        h2 {
+            font-weight: 700;
+            font-size: 42px;
+            line-height: 60px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            font-weight: 500;
+            line-height: 32px;
+            font-size: 24px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+
+            li {
+                padding: 10px 0 0 25px;
+                position: relative;
+
+                i {
+                    left: 0;
+                    top: 12px;
+                    position: absolute;
+                    font-size: 16px;
+                    color: #1bbd36;
+                }
+            }
+        }
+    }
+}
+
+// about section design end
+
+
+// service section design start
+.service_sec {
+    background-color: #f7f7f7;
+
+    .icon-box {
+        text-align: center;
+        padding: 70px 20px 80px 20px;
+        transition: all ease-in-out 0.3s;
+        background: #fff;
+
+        svg{
+            transition: 0.4s all ease;
+        }
+
+        h4{
+            a{
+                color: #111;
+                transition: ease-in-out 0.3s;
+                text-decoration: none;
+
+                &:hover{
+                    color: variables.$theme-color;
+                }
+            }
+        }
+
+        &:hover {
+            border-color: #fff;
+            box-shadow: 0px 0 35px 0 rgba(0, 0, 0, 0.08);
+        }
+
+        .icon {
+            margin: 0 auto;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: ease-in-out 0.3s;
+            position: relative;
+
+            svg {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            i {
+                font-size: 36px;
+                transition: 0.4s all ease;
+                position: relative;
+
+                svg {
+                    position: static;
+                }
+            }
+        }
+
+        &.iconbox-blue i {
+            color: #47aeff;
+        }
+
+        &.iconbox-blue:hover .icon i path {
+            fill: #fff;
+        }
+
+        &.iconbox-blue:hover .icon path {
+            fill: #47aeff;
+        }
+
+        &.iconbox-orange i {
+            color: #ffa76e;
+        }
+
+        &.iconbox-orange:hover .icon i path {
+            fill: #fff;
+        }
+
+        &.iconbox-orange:hover .icon path {
+            fill: #ffa76e;
+        }
+
+        &.iconbox-pink i {
+            color: #e80368;
+        }
+
+        &.iconbox-pink:hover .icon i path {
+            fill: #fff;
+        }
+
+        &.iconbox-pink:hover .icon path {
+            fill: #e80368;
+        }
+
+        &.iconbox-yellow i {
+            color: #ffbb2c;
+        }
+
+        &.iconbox-yellow:hover .icon i path {
+            fill: #fff;
+        }
+
+        &.iconbox-yellow:hover .icon path {
+            fill: #ffbb2c;
+        }
+
+        &.iconbox-red i {
+            color: #ff5828;
+        }
+
+        &.iconbox-red:hover .icon i path {
+            fill: #fff;
+        }
+
+        &.iconbox-red:hover .icon path {
+            fill: #ff5828;
+        }
+
+        &.iconbox-teal i {
+            color: #11dbcf;
+        }
+
+        &.iconbox-teal:hover .icon i path {
+            fill: #fff;
+        }
+
+        &.iconbox-teal:hover .icon path {
+            fill: #11dbcf;
+        }
+
+    }
+
+    .services_row {
+        margin-bottom: -30px;
+
+        .services_col {
+            margin-bottom: 30px;
+        }
+    }
+}
+
+// service section design end

@@ -1,11 +1,14 @@
 import Header from './component/common/Header/Header';
+import Home from './pages/Home/Home';
 import './style.scss'
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+AOS.init();
 function App() {
   return (
     <>
       <Header />
-      Hello World !
+      <Home />
     </>
   );
 }

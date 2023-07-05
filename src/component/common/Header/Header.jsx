@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap'
+import './Header.scss'
 
 const Header = () => {
     return (
@@ -43,14 +44,14 @@ const Header = () => {
                         <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
-                            <Nav className="me-auto">
+                            <Nav className="ms-auto">
                                 <Nav.Link href="#home">Home</Nav.Link>
                                 <Nav.Link href="#link">About</Nav.Link>
-                                <Nav.Link href="#link">COURSES</Nav.Link>
-                                <Nav.Link href="#link">BLOG</Nav.Link>
-                                <Nav.Link href="#link">BLOG</Nav.Link>
-                                <Nav.Link href="#link">CONTACT</Nav.Link>
-                                <Nav.Link href="#link">LOGIN</Nav.Link>
+                                <Nav.Link href="#link">courses</Nav.Link>
+                                <Nav.Link href="#link">blog</Nav.Link>
+                                <Nav.Link href="#link">blog</Nav.Link>
+                                <Nav.Link href="#link">contact</Nav.Link>
+                                <Nav.Link href="#link">login</Nav.Link>
                                 <NavDropdown title="Hi Kousik" id="basic-nav-dropdown">
                                     <NavDropdown.Item href="#action/3.1">Logout</NavDropdown.Item>
                                     <NavDropdown.Item href="#action/3.2">
