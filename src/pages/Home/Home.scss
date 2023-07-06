@@ -226,3 +226,85 @@
 }
 
 // service section design end
+
+
+
+.company-sec{
+    position: relative;
+    background-color: #f7f7f7;
+    .companyimg-rw{
+        border-top: 1px solid #ececec;
+        border-left: 1px solid #ececec;
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 0;
+        .client-logo {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-right: 1px solid #ececec;
+            border-bottom: 1px solid #ececec;
+            overflow: hidden;
+            background: #fff;
+            height: 100px;
+            &:hover{
+                img{
+                    -webkit-filter: none;
+                    filter: none;
+                    transform: scale(1.1);
+                }
+            }
+            img {
+                transition: all 0.3s ease-in-out;
+                height: 36px;
+                -webkit-filter: grayscale(100%);
+                filter: grayscale(100%);
+            }
+        }
+    }
+}
+
+.testimonial-sec{
+    position: relative;
+    .testimonial-rw{
+        --bs-gutter-y:30px;
+        .testimonial-item {
+            box-sizing: content-box;
+            padding: 40px;
+            box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.18);
+            position: relative;
+            background: #fff;
+            .testimonial-img {
+                width: 90px;
+                border-radius: 50px;
+                border: 6px solid #fff;
+                float: left;
+                margin: 0 10px 0 0;
+            }
+            h3 {
+                font-size: 18px;
+                font-weight: bold;
+                margin: 10px 0 5px 0;
+                color: #111;
+            }
+            h4 {
+                font-size: 14px;
+                color: #999;
+                margin: 0;
+            }
+            p {
+                font-style: italic;
+                margin: 15px 0 0 0;
+                padding: 0;
+            }
+            .quote{
+                display: inline-block;
+                color: #dddddd;
+                font-size: 26px;
+                font-family: 'Catamaran', sans-serif;
+                line-height: 1;
+                font-style: normal;
+            }
+        }
+    }
+}
