@@ -1,0 +1,260 @@
+.bloag-mainwrapper {
+    position: relative;
+    padding: 80px 0;
+
+    .entry {
+        padding: 30px;
+        margin-bottom: 60px;
+        box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+
+        .entry-img {
+            max-height: 400px;
+            margin: -30px -30px 20px -30px;
+            overflow: hidden;
+        }
+
+        .entry-title {
+            font-size: 28px;
+            font-weight: bold;
+            padding: 0;
+            margin: 0 0 20px 0;
+
+            a {
+                color: #111;
+                transition: 0.3s;
+
+                &:hover {
+                    color: #1bbd36;
+                }
+            }
+        }
+
+        .entry-meta {
+            margin-bottom: 15px;
+            color: #aaaaaa;
+
+            ul {
+                display: flex;
+                flex-wrap: wrap;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+
+                li {
+                    padding-left: 20px;
+
+                    i {
+                        font-size: 14px;
+                        padding-right: 4px;
+                    }
+
+                    a {
+                        color: #5e5e5e;
+                        font-size: 14px;
+                        display: inline-block;
+                        line-height: 20px;
+                        transition: 0.3s;
+
+                        &:hover {
+                            color: #1bbd36;
+                        }
+                    }
+                }
+            }
+        }
+
+        .entry-content {
+            p {
+                line-height: 24px;
+            }
+
+            .read-more {
+                -moz-text-align-last: right;
+                text-align-last: right;
+
+                a {
+                    display: inline-block;
+                    background: #1bbd36;
+                    color: #fff;
+                    padding: 7px 25px;
+                    transition: 0.3s;
+                    font-size: 14px;
+                    border-radius: 4px;
+
+                    &:hover {
+                        background: #1ed33c;
+                    }
+                }
+            }
+
+            h3 {
+                font-size: 22px;
+                margin-top: 30px;
+                font-weight: bold;
+            }
+
+            blockquote {
+                overflow: hidden;
+                background-color: #fafafa;
+                padding: 60px;
+                position: relative;
+                text-align: center;
+                margin: 20px 0;
+            }
+        }
+    }
+
+    .blog-pagination {
+        color: #444444;
+
+        ul {
+            display: flex;
+            padding-left: 0;
+            list-style: none;
+
+            li {
+                border: 1px solid white;
+                margin: 0 5px;
+                transition: 0.3s;
+
+                &.active {
+                    background: #1bbd36;
+                    border: 1px solid #1bbd36;
+                    border-radius: 4px;
+
+                    a {
+                        color: #ffffff;
+                    }
+                }
+
+                a {
+                    color: #b4aca8;
+                    padding: 7px 16px;
+                    display: inline-block;
+                }
+
+                &:hover {
+                    background: #1bbd36;
+                    border: 1px solid #1bbd36;
+                    border-radius: 4px;
+
+                    a {
+                        color: #ffffff;
+                    }
+                }
+            }
+        }
+    }
+
+    .sidebar {
+        padding: 30px;
+        margin: 0 0 60px 20px;
+        box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+
+        .sidebar-title {
+            font-size: 20px;
+            font-weight: 700;
+            padding: 0 0 0 0;
+            margin: 0 0 15px 0;
+            color: #111;
+            position: relative;
+
+
+        }
+
+        .sidebar-item {
+            margin-bottom: 30px;
+
+            form {
+                background: #fff;
+                border: 1px solid #ddd;
+                padding: 3px 10px;
+                position: relative;
+                border-radius: 4px;
+
+                input[type=text] {
+                    border: 0;
+                    padding: 4px;
+                    width: calc(100% - 40px);
+                    outline: none;
+                    box-shadow: none;
+                }
+
+                button {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    border: 0;
+                    background: none;
+                    font-size: 16px;
+                    padding: 0 15px;
+                    margin: -1px;
+                    background: #1bbd36;
+                    color: #fff;
+                    transition: 0.3s;
+                    border-radius: 0 4px 4px 0;
+
+                    &:hover {
+                        background: #1ed33c;
+                    }
+                }
+            }
+        }
+
+        .categories {
+            ul {
+                list-style: none;
+                padding: 0;
+
+                li {
+                    padding-top: 10px;
+
+                    a {
+                        color: #2b2b2b;
+                        transition: 0.3s;
+
+                        &:hover {
+                            color: #1bbd36;
+                        }
+
+                        span {
+                            padding-left: 5px;
+                            color: #aaaaaa;
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .recent-posts {
+            .post-item {
+                margin-top: 15px;
+                img {
+                    width: 80px;
+                    float: left;
+                  }
+                  h4 {
+                    font-size: 15px;
+                    margin-left: 95px;
+                    font-weight: bold;
+                    a {
+                        color: black;
+                        transition: 0.3s;
+                        &:hover {
+                            color: #1bbd36;
+                          }
+                      }
+                  }
+                  time {
+                    display: block;
+                    margin-left: 95px;
+                    font-style: italic;
+                    font-size: 14px;
+                    color: #777777;
+                  }
+            }
+        }
+    }
+}

@@ -7,6 +7,7 @@ import './style.scss'
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Blog from './pages/Blog/Blog';
 
 AOS.init();
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/courses' element={<Courses />} />s
+          <Route path='/blog' element={<Blog />} />s
         </Routes>
         <Footer />
       </Router>
