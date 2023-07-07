@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Home.scss'
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
@@ -24,10 +24,24 @@ import companyicn06 from '../../../src/assets/images/client-6.png';
 import companyicn07 from '../../../src/assets/images/client-7.png';
 import companyicn08 from '../../../src/assets/images/client-8.png';
 import testiimg01 from '../../../src/assets/images/testimonials-1.jpg';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchService } from '../../redux/Service';
+import { fetchTesimonial } from '../../redux/Testimonial';
 
 
 
 const Home = () => {
+    const { serviceData } = useSelector((state) => state?.service)
+    const { testimonialData } = useSelector((state) => state?.testimonial)
+    //console.log(serviceData);
+    console.log(testimonialData);
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(fetchService())
+        dispatch(fetchTesimonial())
+    }, [dispatch])
     return (
         <>
             <div className="banner_sec">
@@ -138,7 +152,29 @@ const Home = () => {
                             <p>Laborum repudiandae omnis voluptatum consequatur mollitia ea est voluptas ut</p>
                         </div>
                         <div class="row services_row">
-                            <div class="col-lg-4 col-md-6 services_col" data-aos="zoom-in" data-aos-delay="100">
+                            {
+                                serviceData?.data?.map((service, index) => {
+                                    return (
+                                        <>
+                                            <div class="col-lg-4 col-md-6 services_col" data-aos="zoom-in" data-aos-delay="100">
+                                                <div class="icon-box iconbox-blue">
+                                                    <div class="icon">
+                                                        <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                                                            <path stroke="none" strokeWidth="0" fill="#f5f5f5" d="M300,521.0016835830174C376.1290562159157,517.8887921683347,466.0731472004068,529.7835943286574,510.70327084640275,468.03025145048787C554.3714126377745,407.6079735673963,508.03601936045806,328.9844924480964,491.2728898941984,256.3432110539036C474.5976632858925,184.082847569629,479.9380746630129,96.60480741107993,416.23090153303,58.64404602377083C348.86323505073057,18.502131276798302,261.93793281208167,40.57373210992963,193.5410806939664,78.93577620505333C130.42746243093433,114.334589627462,98.30271207620316,179.96522072025542,76.75703585869454,249.04625023123273C51.97151888228291,328.5150500222984,13.704378332031375,421.85034740162234,66.52175969318436,486.19268352777647C119.04800174914682,550.1803526380478,217.28368757567262,524.383925680826,300,521.0016835830174"></path>
+                                                        </svg>
+                                                        <i><FontAwesomeIcon icon={faChalkboardTeacher} /></i>
+                                                    </div>
+                                                    <h4><Link to=''>{service.name}</Link></h4>
+                                                    <p>{service.details}</p>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )
+
+                                })
+                            }
+
+                            {/* <div class="col-lg-4 col-md-6 services_col" data-aos="zoom-in" data-aos-delay="100">
                                 <div class="icon-box iconbox-blue">
                                     <div class="icon">
                                         <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -214,7 +250,7 @@ const Home = () => {
                                     <h4><Link to="">Divera Don</Link></h4>
                                     <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
                                 </div>
-                            </div>
+                            </div> */}
 
                         </div>
                     </div>
@@ -222,7 +258,7 @@ const Home = () => {
             </div>
             {/* servie section end */}
 
-            
+
             {/* testimonial-section */}
             <div className='testimonial-sec cmn_gap'>
                 <Container>
@@ -232,9 +268,29 @@ const Home = () => {
                             <p>Laborum repudiandae omnis voluptatum consequatur mollitia ea est voluptas ut</p>
                         </div>
                         <div className='row testimonial-rw'>
-                            <div className='col-lg-6 testimonial-clm' data-aos="zoom-in" data-aos-delay="100">
+                            {
+                                testimonialData?.testimonials?.map((test, index) => {
+                                    return (
+                                        <>
+                                            <div className='col-lg-6 testimonial-clm' data-aos="zoom-in" data-aos-delay="100">
+                                                <div class="testimonial-item">
+                                                    <img src={testiimg01} class="testimonial-img" alt="" />
+                                                    <h3>{test.name}</h3>
+                                                    <h4>{test.position}</h4>
+                                                    <p>
+                                                        <i class="quote">&ldquo;</i>
+                                                        {test.talk.slice(0,150)}...
+                                                        <i class="quote">&rdquo;</i>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )
+                                })
+                            }
+                            {/* <div className='col-lg-6 testimonial-clm' data-aos="zoom-in" data-aos-delay="100">
                                 <div class="testimonial-item">
-                                    <img src={testiimg01} class="testimonial-img" alt=""/>
+                                    <img src={testiimg01} class="testimonial-img" alt="" />
                                     <h3>Saul Goodman</h3>
                                     <h4>Ceo &amp; Founder</h4>
                                     <p>
@@ -246,7 +302,7 @@ const Home = () => {
                             </div>
                             <div className='col-lg-6 testimonial-clm' data-aos="zoom-in" data-aos-delay="100">
                                 <div class="testimonial-item">
-                                    <img src={testiimg01} class="testimonial-img" alt=""/>
+                                    <img src={testiimg01} class="testimonial-img" alt="" />
                                     <h3>Saul Goodman</h3>
                                     <h4>Ceo &amp; Founder</h4>
                                     <p>
@@ -258,7 +314,7 @@ const Home = () => {
                             </div>
                             <div className='col-lg-6 testimonial-clm' data-aos="zoom-in" data-aos-delay="100">
                                 <div class="testimonial-item">
-                                    <img src={testiimg01} class="testimonial-img" alt=""/>
+                                    <img src={testiimg01} class="testimonial-img" alt="" />
                                     <h3>Saul Goodman</h3>
                                     <h4>Ceo &amp; Founder</h4>
                                     <p>
@@ -270,7 +326,7 @@ const Home = () => {
                             </div>
                             <div className='col-lg-6 testimonial-clm' data-aos="zoom-in" data-aos-delay="100">
                                 <div class="testimonial-item">
-                                    <img src={testiimg01} class="testimonial-img" alt=""/>
+                                    <img src={testiimg01} class="testimonial-img" alt="" />
                                     <h3>Saul Goodman</h3>
                                     <h4>Ceo &amp; Founder</h4>
                                     <p>
@@ -279,7 +335,7 @@ const Home = () => {
                                         <i class="quote">&rdquo;</i>
                                     </p>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </Container>
@@ -295,42 +351,42 @@ const Home = () => {
                             <div className='row companyimg-rw'>
                                 <div class="col-lg-3 col-md-4 companyimg-col" data-aos="zoom-in" data-aos-delay="100">
                                     <div class="client-logo">
-                                        <img src={companyicn01} class="img-fluid" alt=""/>
+                                        <img src={companyicn01} class="img-fluid" alt="" />
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-4 companyimg-col" data-aos="zoom-in" data-aos-delay="100">
                                     <div class="client-logo">
-                                        <img src={companyicn02} class="img-fluid" alt=""/>
+                                        <img src={companyicn02} class="img-fluid" alt="" />
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-4 companyimg-col" data-aos="zoom-in" data-aos-delay="100">
                                     <div class="client-logo">
-                                        <img src={companyicn03} class="img-fluid" alt=""/>
+                                        <img src={companyicn03} class="img-fluid" alt="" />
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-4 companyimg-col" data-aos="zoom-in" data-aos-delay="100">
                                     <div class="client-logo">
-                                        <img src={companyicn04} class="img-fluid" alt=""/>
+                                        <img src={companyicn04} class="img-fluid" alt="" />
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-4 companyimg-col" data-aos="zoom-in" data-aos-delay="100">
                                     <div class="client-logo">
-                                        <img src={companyicn05} class="img-fluid" alt=""/>
+                                        <img src={companyicn05} class="img-fluid" alt="" />
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-4 companyimg-col" data-aos="zoom-in" data-aos-delay="100">
                                     <div class="client-logo">
-                                        <img src={companyicn06} class="img-fluid" alt=""/>
+                                        <img src={companyicn06} class="img-fluid" alt="" />
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-4 companyimg-col" data-aos="zoom-in" data-aos-delay="100">
                                     <div class="client-logo">
-                                        <img src={companyicn07} class="img-fluid" alt=""/>
+                                        <img src={companyicn07} class="img-fluid" alt="" />
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-4 companyimg-col" data-aos="zoom-in" data-aos-delay="100">
                                     <div class="client-logo">
-                                        <img src={companyicn08} class="img-fluid" alt=""/>
+                                        <img src={companyicn08} class="img-fluid" alt="" />
                                     </div>
                                 </div>
                             </div>

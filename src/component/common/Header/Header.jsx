@@ -49,7 +49,6 @@ const Header = () => {
                                 <Nav.Link href="#link">About</Nav.Link>
                                 <Nav.Link href="#link">courses</Nav.Link>
                                 <Nav.Link href="#link">blog</Nav.Link>
-                                <Nav.Link href="#link">blog</Nav.Link>
                                 <Nav.Link href="#link">contact</Nav.Link>
                                 <Nav.Link href="#link">login</Nav.Link>
                                 <NavDropdown title="Hi Kousik" id="basic-nav-dropdown">
