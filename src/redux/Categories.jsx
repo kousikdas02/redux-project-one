@@ -1,8 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-
-
 export const fetchCategories= createAsyncThunk("categories",async()=>
 {
     try {
@@ -16,15 +14,13 @@ export const fetchCategories= createAsyncThunk("categories",async()=>
 const initialState ={
     categoriesData:[],
     status:"success",
-   
-
 }
 
 export const categoriesSlice = createSlice({
     name:"blog",
     initialState,
     reducers:{
-       
+    
     },extraReducers:{
         [fetchCategories.pending]:(state)=>{
             state.status="Loading......"
