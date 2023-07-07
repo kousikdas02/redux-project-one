@@ -1,24 +1,11 @@
+import Breadcrumbs from '../../component/common/Breadcrumbs/Breadcrumbs'
 import './Courses.scss'
 import { Container } from 'react-bootstrap'
 
 const Courses = () => {
     return (
         <>
-            {/* ======= Breadcrumbs ====== */}
-            <section id="breadcrumbs" class="breadcrumbs">
-                <Container>
-
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h2>Courses</h2>
-                        <ol>
-                            <li><a href="index.html">Home</a></li>
-                            <li>Courses</li>
-                        </ol>
-                    </div>
-
-                </Container>
-            </section>
-            {/* End Breadcrumbs */}
+            <Breadcrumbs />
 
             {/* < ======= Pricing Section =======  */}
             <section id="pricing" class="pricing cmn_gap">
