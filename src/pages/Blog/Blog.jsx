@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Breadcrumbs from '../../component/common/Breadcrumbs/Breadcrumbs'
 import { Container } from 'react-bootstrap'
 import './Blog.scss'
@@ -7,9 +7,27 @@ import { faUser, faClock, faMessage, faMagnifyingGlass } from '@fortawesome/free
 import bloagimg from '../../assets/images/blog-1.jpg'
 import bloagimgrcnt from '../../assets/images/blog-recent-posts-1.jpg'
 import srchicn from '../../assets/images/magnifying-glass-solid.svg'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchBlog } from '../../redux/Blog'
+import { fetchCategories } from '../../redux/Categories'
+import { fetchRecentPost } from '../../redux/RecentPostSlice'
+import { Link } from 'react-router-dom'
+import { ColorRing } from 'react-loader-spinner'
 
 
 const Blog = () => {
+    const { blogData } = useSelector((state) => state?.blog)
+    const { categoriesData } = useSelector((state) => state.categories)
+    const { recentPostData } = useSelector((state) => state?.recentPost)
+
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(fetchBlog())
+        dispatch(fetchCategories())
+        dispatch(fetchRecentPost())
+    }, [])
     return (
         <>
             <Breadcrumbs />
@@ -20,7 +38,7 @@ const Blog = () => {
 
                         <div class="col-lg-8 entries">
 
-                            <article class="entry" data-aos="fade-up">
+                            {/* <article class="entry" data-aos="fade-up">
 
                                 <div class="entry-img">
                                     <img src={bloagimg} alt="" class="img-fluid"/>
@@ -138,7 +156,67 @@ const Blog = () => {
                                     </div>
                                 </div>
 
-                            </article>
+                            </article> */}
+
+                            {
+                                blogData !== null ? (
+                                    <>
+                                        {
+                                            blogData?.data?.map((blog, index) => {
+                                                return (
+                                                    <>
+                                                        <article class="entry" data-aos="fade-up" key={index._id}>
+
+                                                            <div class="entry-img">
+                                                                <img src={`https://restapinodejs.onrender.com/api/blog/image/${blog._id}`} alt="" className="img-fluid" />
+
+                                                            </div>
+
+                                                            <h2 class="entry-title">
+                                                                <Link to="/blogdetails">{blog.title}</Link>
+                                                            </h2>
+
+                                                            <div class="entry-meta">
+                                                                <ul>
+                                                                    <li class="d-flex align-items-center"><i><FontAwesomeIcon icon={faUser} /></i> <a href="blog-single.html">John Doe</a></li>
+                                                                    <li class="d-flex align-items-center"><i><FontAwesomeIcon icon={faClock} /></i> <a href="blog-single.html"><time dateTime="2020-01-01">{(new Date(blog.createdAt)).toLocaleDateString()}</time></a></li>
+                                                                    <li class="d-flex align-items-center"><i><FontAwesomeIcon icon={faMessage} /></i> <a href="blog-single.html">{blog.comment_count} Comments</a></li>
+                                                                </ul>
+                                                            </div>
+
+                                                            <div class="entry-content">
+                                                                <p dangerouslySetInnerHTML={{
+                                                                    __html: blog?.postText.slice(0, 350,)
+                                                                }}>
+
+                                                                </p>
+                                                                <div class="read-more">
+                                                                    <Link to={`/blogdetails/${blog?._id}`}>Read More</Link>
+                                                                </div>
+                                                            </div>
+
+                                                        </article>
+
+                                                    </>
+
+                                                )
+                                            })
+                                        }
+                                    </>
+                                ) : (
+                                    <div className="loader_wpr">
+                                        <ColorRing
+                                            visible={true}
+                                            height="80"
+                                            width="80"
+                                            ariaLabel="blocks-loading"
+                                            wrapperStyle={{}}
+                                            wrapperClass="blocks-wrapper"
+                                            colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+                                        />
+                                    </div>
+
+                                )}
 
                             <div class="blog-pagination">
                                 <ul class="justify-content-center">
@@ -159,8 +237,8 @@ const Blog = () => {
                                 <h3 class="sidebar-title">Search</h3>
                                 <div class="sidebar-item search-form">
                                     <form action="">
-                                        <input type="text"/>
-                                            <button type="submit"><i><img src={srchicn} alt=''/></i></button>
+                                        <input type="text" />
+                                        <button type="submit"><i><img src={srchicn} alt='' /></i></button>
                                     </form>
 
                                 </div>
@@ -181,33 +259,33 @@ const Blog = () => {
                                 <h3 class="sidebar-title">Recent Posts</h3>
                                 <div class="sidebar-item recent-posts">
                                     <div class="post-item clearfix">
-                                        <img src={bloagimgrcnt} alt=""/>
-                                            <h4><a href="blog-single.html">Nihil blanditiis at in nihil autem</a></h4>
-                                            <time datetime="2020-01-01">Jan 1, 2020</time>
+                                        <img src={bloagimgrcnt} alt="" />
+                                        <h4><a href="blog-single.html">Nihil blanditiis at in nihil autem</a></h4>
+                                        <time datetime="2020-01-01">Jan 1, 2020</time>
                                     </div>
 
                                     <div class="post-item clearfix">
-                                        <img src={bloagimgrcnt} alt=""/>
-                                            <h4><a href="blog-single.html">Quidem autem et impedit</a></h4>
-                                            <time datetime="2020-01-01">Jan 1, 2020</time>
+                                        <img src={bloagimgrcnt} alt="" />
+                                        <h4><a href="blog-single.html">Quidem autem et impedit</a></h4>
+                                        <time datetime="2020-01-01">Jan 1, 2020</time>
                                     </div>
 
                                     <div class="post-item clearfix">
-                                        <img src={bloagimgrcnt} alt=""/>
-                                            <h4><a href="blog-single.html">Id quia et et ut maxime similique occaecati ut</a></h4>
-                                            <time datetime="2020-01-01">Jan 1, 2020</time>
+                                        <img src={bloagimgrcnt} alt="" />
+                                        <h4><a href="blog-single.html">Id quia et et ut maxime similique occaecati ut</a></h4>
+                                        <time datetime="2020-01-01">Jan 1, 2020</time>
                                     </div>
 
                                     <div class="post-item clearfix">
-                                        <img src={bloagimgrcnt} alt=""/>
-                                            <h4><a href="blog-single.html">Laborum corporis quo dara net para</a></h4>
-                                            <time datetime="2020-01-01">Jan 1, 2020</time>
+                                        <img src={bloagimgrcnt} alt="" />
+                                        <h4><a href="blog-single.html">Laborum corporis quo dara net para</a></h4>
+                                        <time datetime="2020-01-01">Jan 1, 2020</time>
                                     </div>
 
                                     <div class="post-item clearfix">
-                                        <img src={bloagimgrcnt} alt=""/>
-                                            <h4><a href="blog-single.html">Et dolores corrupti quae illo quod dolor</a></h4>
-                                            <time datetime="2020-01-01">Jan 1, 2020</time>
+                                        <img src={bloagimgrcnt} alt="" />
+                                        <h4><a href="blog-single.html">Et dolores corrupti quae illo quod dolor</a></h4>
+                                        <time datetime="2020-01-01">Jan 1, 2020</time>
                                     </div>
 
                                 </div>
