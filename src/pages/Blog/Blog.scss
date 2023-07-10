@@ -43,6 +43,10 @@
                 li {
                     padding-left: 20px;
 
+                    &:first-child{
+                        padding-left: 0;
+                    }
+
                     i {
                         font-size: 14px;
                         padding-right: 4px;

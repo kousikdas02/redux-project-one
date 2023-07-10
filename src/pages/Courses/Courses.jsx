@@ -1,86 +1,84 @@
-import Breadcrumbs from '../../component/common/Breadcrumbs/Breadcrumbs'
+import { useDispatch, useSelector } from 'react-redux';
 import './Courses.scss'
 import { Container } from 'react-bootstrap'
+import { useEffect } from 'react';
+import { fetchCourse } from '../../redux/Course';
+import { Link } from 'react-router-dom';
 
 const Courses = () => {
+    const { courseData } = useSelector((state) => state?.course)
+    console.log(courseData);
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(fetchCourse())
+    }, [])
     return (
         <>
-            <Breadcrumbs />
+            {/* ======= Breadcrumbs ====== */}
+            <section id="breadcrumbs" className="breadcrumbs">
+                <Container>
+
+                    <div className="d-flex justify-content-between align-items-center">
+                        <h2>Courses</h2>
+                        <ol>
+                            <li><a href="index.html">Home</a></li>
+                            <li>Courses</li>
+                        </ol>
+                    </div>
+
+                </Container>
+            </section>
+            {/* End Breadcrumbs */}
 
             {/* < ======= Pricing Section =======  */}
-            <section id="pricing" class="pricing cmn_gap">
+            <section id="pricing" className="pricing cmn_gap">
                 <Container data-aos="fade-up">
 
-                    <div class="row">
+                    <div className="row">
+                        {
+                            courseData?.Courses?.map((course, index) => {
+                                console.log(course);
+                                return (
+                                    <>
+                                        {/* <div className="col-lg-3 col-md-6">
+                                            <div className="box">
+                                                <h3>{course.name}</h3>
+                                                <img className='w-100 mb-3' src={`https://restapinodejs.onrender.com/api/course/photo/${course._id}`} alt="" />
+                                                <ul>
+                                                    <li className='text-dark'><strong className='text-primary'>Duration: </strong>{course.duration}</li>
+                                                    <li className='text-dark'  ><strong className='text-primary'>Fees: </strong>{course.fees}</li>
+                                                    <li className='text-dark'><strong  className='text-primary'>Requirement: </strong>{course.requirement}</li>
+                                                    
+                                                </ul>
+                                                <div className="btn-wrap">
+                                                    <Link to={`/courseapply/${course.name}`} className="btn-buy">Apply Courses</Link>
+                                             </div>
+                                            </div>
+                                        </div> */}
 
-                        <div class="col-lg-3 col-md-6">
-                            <div class="box">
-                                <h3>Free</h3>
-                                <h4><sup>$</sup>0<span> / month</span></h4>
-                                <ul>
-                                    <li>Aida dere</li>
-                                    <li>Nec feugiat nisl</li>
-                                    <li>Nulla at volutpat dola</li>
-                                    <li class="na">Pharetra massa</li>
-                                    <li class="na">Massa ultricies mi</li>
-                                </ul>
-                                <div class="btn-wrap">
-                                    <a href="#" class="btn-buy">Apply Couese</a>
-                                </div>
-                            </div>
-                        </div>
+                                        <div className="col-lg-3 col-md-6">
+                                            <div className="box">
+                                                <h3>{course.name}</h3>
 
-                        <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
-                            <div class="box featured">
-                                <h3>Business</h3>
-                                <h4><sup>$</sup>19<span> / month</span></h4>
-                                <ul>
-                                    <li>Aida dere</li>
-                                    <li>Nec feugiat nisl</li>
-                                    <li>Nulla at volutpat dola</li>
-                                    <li>Pharetra massa</li>
-                                    <li class="na">Massa ultricies mi</li>
-                                </ul>
-                                <div class="btn-wrap">
-                                    <a href="#" class="btn-buy">Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
+                                                <div className="box_content">
+                                                    {/* <span className="advanced">Advanced</span> */}
+                                                    <h4>{course.fees}</h4>
+                                                    <ul>
+                                                        <li>Duration: {course.duration}</li>
+                                                        <li>Requirement : {course.requirement}</li>
+                                                    </ul>
+                                                </div>
+                                                <div className="btn-wrap">
+                                                    <a href="#" className="btn-buy">Apply Couese</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </>
+                                )
+                            })
+                        }
 
-                        <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-                            <div class="box">
-                                <h3>Developer</h3>
-                                <h4><sup>$</sup>29<span> / month</span></h4>
-                                <ul>
-                                    <li>Aida dere</li>
-                                    <li>Nec feugiat nisl</li>
-                                    <li>Nulla at volutpat dola</li>
-                                    <li>Pharetra massa</li>
-                                    <li>Massa ultricies mi</li>
-                                </ul>
-                                <div class="btn-wrap">
-                                    <a href="#" class="btn-buy">Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-                            <div class="box">
-                                <span class="advanced">Advanced</span>
-                                <h3>Ultimate</h3>
-                                <h4><sup>$</sup>49<span> / month</span></h4>
-                                <ul>
-                                    <li>Aida dere</li>
-                                    <li>Nec feugiat nisl</li>
-                                    <li>Nulla at volutpat dola</li>
-                                    <li>Pharetra massa</li>
-                                    <li>Massa ultricies mi</li>
-                                </ul>
-                                <div class="btn-wrap">
-                                    <a href="#" class="btn-buy">Buy Now</a>
-                                </div>
-                            </div>
-                        </div>
 
                     </div>
 
